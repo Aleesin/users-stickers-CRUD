@@ -8,21 +8,20 @@ Add form-based cookie authentication to our sticker-mania app.
 * Admin User - can view any page; can de-activate users;
 
 ## Authentication
-* [ ] Add auth router
+* [x] Add auth router
 * [ ] Create user with POST /auth/signup
-	* [ ] validate required fields
-	* [ ] Check if email is unique
-	* [ ] hash password with bcrypt
-	* [ ] insert into db
-	* [ ] Set a cookie with user_id after creating user
-		* [ ] Best Practices
-		* [ ] Cross origin cookie!
+	* [x] validate required fields
+	* [x] Check if email is unique
+	* [x] hash password with bcrypt
+	* [x] insert into db
+* [ ] Login user with POST /auth/login
+	* [x] check if email in db
+		* [x] compare password with hashed password in db
+  	* [x] Set a cookie with user_id after creating user
+      * [x] Best Practices
+      * [ ] Cross origin cookie!
 * [ ] Create sign up form; show errors; redirect;
 	* [ ] Validate required fields
-* [ ] Login user with POST /auth/login
-	* [ ] check if email in db
-		* [ ] compare password with hashed password in db
-		* [ ] set cookie
 * [ ] Create login form; show errors; redirect;
  	* [ ] validate required fields
 

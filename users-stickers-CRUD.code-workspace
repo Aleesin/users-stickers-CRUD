@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		// When opening a file, `editor.tabSize` and `editor.insertSpaces` will be detected based on the file contents.
+		"editor.detectIndentation": false,
+
+    // Insert spaces when pressing Tab. This setting is overridden based on the file contents when `editor.detectIndentation` is on.
+    "editor.insertSpaces": true,
+
+    // The number of spaces a tab is equal to. This setting is overridden based on the file contents when `editor.detectIndentation` is on.
+    "editor.tabSize": 2
+	}
+}
