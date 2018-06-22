@@ -14,16 +14,16 @@ Add form-based cookie authentication to our sticker-mania app.
 	* [x] Check if email is unique
 	* [x] hash password with bcrypt
 	* [x] insert into db
-* [ ] Login user with POST /auth/login
+* [x] Login user with POST /auth/login
 	* [x] check if email in db
 		* [x] compare password with hashed password in db
   	* [x] Set a cookie with user_id after creating user
       * [x] Best Practices
-      * [ ] Cross origin cookie!
+      * [x] Cross origin cookie!
+* [x] Create login form; show errors; redirect;
+ 	* [x] validate required fields
 * [ ] Create sign up form; show errors; redirect;
 	* [ ] Validate required fields
-* [ ] Create login form; show errors; redirect;
- 	* [ ] validate required fields
 
 ### Authorization:
 * [ ] Visitors can only see the homepage
