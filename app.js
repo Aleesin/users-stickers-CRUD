@@ -10,6 +10,8 @@ var index = require('./routes/index');
 var user = require('./routes/user');
 var auth = require('./auth');
 
+var authMiddleware = require('./auth/middleware');
+
 var app = express();
 
 // view engine setup
@@ -31,7 +33,7 @@ app.use(cors({
 app.use('/auth', auth);
 
 app.use('/', index);
-app.use('/user', user);
+app.use('/user', authMiddleware.ensureLoggedIn, user);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

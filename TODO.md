@@ -9,7 +9,7 @@ Add form-based cookie authentication to our sticker-mania app.
 
 ## Authentication
 * [x] Add auth router
-* [ ] Create user with POST /auth/signup
+* [x] Create user with POST /auth/signup
 	* [x] validate required fields
 	* [x] Check if email is unique
 	* [x] hash password with bcrypt
@@ -22,17 +22,23 @@ Add form-based cookie authentication to our sticker-mania app.
       * [x] Cross origin cookie!
 * [x] Create login form; show errors; redirect;
  	* [x] validate required fields
-* [ ] Create sign up form; show errors; redirect;
-	* [ ] Validate required fields
+* [x] Create sign up form; show errors; redirect;
+	* [x] Validate required fields
 
 ### Authorization:
 * [ ] Visitors can only see the homepage
-	* [ ] create middleware to redirect visitors without a user_id cookie set
-	* [ ] redirect to sign up form and show an error message
+	* [x] isLoggedIn middleware (actually called ensureLoggedIn)
+    * [x] user_id cookie must be set
+    * [x] send an unauthorized error message
+  * [ ] redirect to login form
 * [ ] Logged in users can only see their page
-	* [ ] check user_id cookie in route handler
- 	* [ ] show an unauthorized error message
-	* [ ] redirect to user page if they visit the homepage
+  * [ ] allowAccess middleware
+    * [ ] id in url must match user_id in cookie
+    * [ ] send an unauthorized error message
+  * [ ] redirect to user page if they visit the homepage
+    * [ ] set user_id in localStorage after login/signup
+* [ ] Add GET /auth/logout to clear user_id cookie
+ * [ ] redirect to login page
 
 ## Admin Page:
 * [ ] Admin page that lists all users
