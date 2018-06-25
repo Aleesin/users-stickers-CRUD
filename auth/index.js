@@ -19,6 +19,15 @@ function validUser(user) {
   return validEmail && validPassword;
 };
 
+function setUserIdCookie(req, res, id) {
+  const isSecure = req.app.get('env') != 'development';
+  res.cookie('user_id', id, {
+    httpOnly: true,
+    signed: true,
+    secure: isSecure
+  });
+}
+
 router.post('/signup', (req, res, next) => {
   if (validUser(req.body)) {
     User
@@ -37,10 +46,12 @@ router.post('/signup', (req, res, next) => {
                 password: hash,
                 created_at: new Date()
               };
+
               User
                 .create(user)
                 .then(id => {
                   // redirect
+                  setUserIdCookie(req, res, id);
                   res.json({
                     id,
                     message: 'USER ADDED'
@@ -73,12 +84,7 @@ router.post('/login', (req, res, next) => {
               // if the passwords matched
               if (result) {
                 // setting the 'set-cookie' header
-                const isSecure = req.app.get('env') != 'development';
-                res.cookie('user_id', user.id, {
-                  httpOnly: true,
-                  signed: true,
-                  secure: isSecure
-                });
+                setUserIdCookie(req, res, user.id);
                 res.json({
                   id: user.id,
                   message: 'Logged in!'
@@ -94,6 +100,13 @@ router.post('/login', (req, res, next) => {
   } else {
     next(new Error('Invalid login'));
   }
+});
+
+router.get('/logout', (req, res) => {
+  res.clearCookie('user_id');
+  res.json({
+    message: 'logged out'
+  });
 });
 
 module.exports = router;
